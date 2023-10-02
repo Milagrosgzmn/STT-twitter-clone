@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Milagrosgzmn/STT-twitter-clone/issues"
   },
-  "homepage": "https://github.com/Milagrosgzmn/STT-twitter-clone#readme"
+  "homepage": "https://github.com/Milagrosgzmn/STT-twitter-clone#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
