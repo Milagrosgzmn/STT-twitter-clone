@@ -18,8 +18,9 @@ function TabBarIcon(props: {
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const conditionalColor = colorScheme === 'light' ? 'black' : 'white';
   const headerTitle = () => (
-    <Image source={logo} style={{ width: 60, height: 70, marginBottom:6, }} />
+    <Image source={logo} style={{ width: 60, height: 70, marginBottom:6,  tintColor: conditionalColor }} />
   );
   return (
     <Tabs
@@ -27,7 +28,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerLeft: () => (
           <Pressable>
-            {({ pressed }) => (<DrawerToggleButton tintColor='black'/>
+            {({ pressed }) => (<DrawerToggleButton tintColor={conditionalColor}/>
             )}
           </Pressable>
       ),
