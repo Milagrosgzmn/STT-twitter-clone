@@ -19,7 +19,7 @@ function TabBarIcon(props: {
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const headerTitle = () => (
-    <Image source={logo} style={{ width: 60, height: 80, marginBottom:6, }} />
+    <Image source={logo} style={{ width: 60, height: 70, marginBottom:6, }} />
   );
   return (
     <Tabs
