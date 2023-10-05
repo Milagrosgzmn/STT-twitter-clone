@@ -1,8 +1,9 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DrawerToggleButton } from '@react-navigation/drawer';
 import { Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import { Pressable, useColorScheme,Image } from 'react-native';
 
+import logo from '../../assets/images/sttlogo.png';
 import Colors from '../../constants/Colors';
 
 /**
@@ -17,17 +18,22 @@ function TabBarIcon(props: {
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
+  const headerTitle = () => (
+    <Image source={logo} style={{ width: 60, height: 70, marginBottom:6, }} />
+  );
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerLeft: () => (
           <Pressable>
-            {({ pressed }) => (<DrawerToggleButton tintColor='white'/>
+            {({ pressed }) => (<DrawerToggleButton tintColor='black'/>
             )}
           </Pressable>
       ),
+      headerTitleAlign: 'center', // Center-align the header title
+      headerTitle, // Use the custom header title component
+      
       }}>
       <Tabs.Screen
         name="index"
