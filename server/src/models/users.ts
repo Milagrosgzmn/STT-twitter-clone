@@ -4,6 +4,7 @@ interface userAttributes{
   user_id: string;
   user_username: string;
   user_firstName: string;
+  user_password: string;
   user_lastName: string;
   user_email: string;
   user_country: string | null;
@@ -18,6 +19,7 @@ module.exports = (sequelize : Sequelize)=>{
         public user_firstName!: string;
         public user_lastName!: string;
         public user_email!: string;
+        public user_password!: string;
         public user_country!: string;
         public user_phoneNumber!: number;
         public followers!: string[] | null;
@@ -44,6 +46,10 @@ module.exports = (sequelize : Sequelize)=>{
                 allowNull:false,
             },
             user_email:{
+                type:DataTypes.STRING,
+                allowNull:false,
+            },
+            user_password:{
                 type:DataTypes.STRING,
                 allowNull:false,
             },
