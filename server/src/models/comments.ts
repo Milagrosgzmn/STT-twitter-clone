@@ -1,4 +1,4 @@
-import { DataTypes, Model, Sequelize, UUIDV4 } from 'sequelize';
+import { DataTypes, Model, Sequelize } from 'sequelize';
 
 interface CommentAttributes{
   comment_id: string;
@@ -21,7 +21,7 @@ module.exports = (sequelize : Sequelize)=>{
         {
             comment_id: {
                 type: DataTypes.UUID,
-                defaultValue: UUIDV4,
+                defaultValue: DataTypes.UUIDV4,
                 primaryKey: true,
             },
             user_id:{
