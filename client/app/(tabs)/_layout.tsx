@@ -3,7 +3,8 @@ import { DrawerToggleButton } from '@react-navigation/drawer';
 import { Tabs } from 'expo-router';
 import { Pressable, useColorScheme,Image } from 'react-native';
 
-import logo from '../../assets/images/sttlogo.png';
+import logo from '../../assets/images/sttlogo.png';  
+
 import Colors from '../../constants/Colors';
 
 /**
