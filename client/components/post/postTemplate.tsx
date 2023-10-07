@@ -1,10 +1,16 @@
 import { Image, StyleSheet, Text, View, useColorScheme } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import userdefault from '../../assets/images/user_default.png';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 
 const Post = () => {
+  const [liked, setLiked] = useState(false);
+
+  const handleLiked = () => {
+    setLiked(!liked);
+  }
+
   const colorScheme = useColorScheme();
   const conditionalColor = colorScheme === 'light' ? 'black' : 'white';
   const fontWeight = conditionalColor === 'black' ? 'bold' : 'normal';
@@ -38,8 +44,10 @@ const Post = () => {
       <View style={[styles.userInfoContainer, { marginTop: 15, justifyContent: 'space-evenly' }]}>
         <MaterialIcons name="chat-bubble-outline" size={24} color={conditionalColor} />
         <AntDesign name="retweet" size={24} color={conditionalColor} />
-        <AntDesign name="hearto" size={24} color={conditionalColor} />
-        <AntDesign name="heart" size={24} color={conditionalColor} />
+      {liked && <AntDesign name="heart" size={24} color={conditionalColor} onClick={handleLiked}/> }
+      {!liked &&       <AntDesign name="hearto" size={24} color={conditionalColor} onClick={handleLiked}/>
+ }   
+        
         <AntDesign name="upload" size={24} color={conditionalColor} />
       </View>
     </View>
@@ -90,10 +98,15 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     alignItems: 'center',
+    width:'100%',
+    height:200,
   },
   image: {
-    width: 280,
-    height: 180,
-    borderRadius: 5,
+    width: '100%',
+    height: '100%',
+    borderRadius: 25,
+    marginBottom: 5,
+    resizeMode: 'cover',
+    
   },
 });
