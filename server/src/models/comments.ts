@@ -29,11 +29,11 @@ module.exports = (sequelize : Sequelize)=>{
                 primaryKey: true,
             },
             user_id:{
-                type: DataTypes.STRING,
+                type: DataTypes.UUID,
                 allowNull: false,
             },
             tweet_id:{
-                type: DataTypes.STRING,
+                type: DataTypes.UUID,
                 allowNull: false,
             },
             text:{
@@ -51,7 +51,7 @@ module.exports = (sequelize : Sequelize)=>{
                 defaultValue: 0,
             },
             multimedia_id:{
-                type: DataTypes.STRING,
+                type: DataTypes.UUID,
                 allowNull: true,
             },
             createdAt:{

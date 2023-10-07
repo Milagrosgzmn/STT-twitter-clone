@@ -25,7 +25,7 @@ module.exports = (sequelize : Sequelize)=>{
                 primaryKey: true,
             },
             user_id:{
-                type: DataTypes.STRING,
+                type: DataTypes.UUID,
                 allowNull: false,
             },
             text:{
@@ -33,11 +33,11 @@ module.exports = (sequelize : Sequelize)=>{
                 allowNull: true,
             },
             multimedia_id:{
-                type: DataTypes.STRING,
+                type: DataTypes.UUID,
                 allowNull: true,
             },
             tweet_id:{
-                type: DataTypes.STRING,
+                type: DataTypes.UUID,
                 allowNull: false,
             },
             created_at:{

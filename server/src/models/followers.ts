@@ -12,22 +12,16 @@ module.exports = (sequelize : Sequelize)=>{
     Followers.init(
         {
             follower_id: {
-                type: DataTypes.STRING,
+                type: DataTypes.UUID,
                 primaryKey: true,
                 allowNull: false,
-                references:{
-                    model: Users,
-                    key: 'user_id',
-                }
+                unique: false,
             },
             following_id: {
-                type: DataTypes.STRING,
+                type: DataTypes.UUID,
                 primaryKey: true,
                 allowNull: false,
-                references:{
-                    model: Users,
-                    key: 'user_id',
-                }
+                unique: false,
             },
         },
         {

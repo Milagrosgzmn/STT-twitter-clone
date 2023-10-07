@@ -1,7 +1,6 @@
 require('dotenv').config();
 const commentsModel = require('./models/comments');
 const followersModel= require('./models/followers');
-const likesModel =require('./models/likes');
 const mediosAdjuntosModel = require('./models/mediosAdjuntos');
 const notificationsModel =require('./models/notifications');
 const retweetsModel = require('./models/retweets');
@@ -18,7 +17,6 @@ const sequelize = new Sequelize(`${conection}`,
 );
 commentsModel(sequelize);
 followersModel(sequelize);
-likesModel(sequelize);
 mediosAdjuntosModel(sequelize);
 notificationsModel(sequelize);
 retweetsModel(sequelize);
@@ -26,41 +24,47 @@ tweetsModel(sequelize);
 usersModel(sequelize);
 MediaRelationshipsModel(sequelize);
 
-const {Comments, MediaRelationships, Followers, Likes, Multimedia, Notifications, Retweets, Tweets,Users} = sequelize.models;
+const {Comments, MediaRelationships, Followers, Multimedia, Notifications, Retweets, Tweets, Users} = sequelize.models;
 
 Users.hasMany(Tweets)
 Tweets.belongsTo(Users,{foreignKey:'user_id'});
 Users.belongsToMany(Users, {
-    as: 'Followers',
+    as: 'followers',
     foreignKey: 'following_id',
     through: 'Followers',
     timestamps: false, 
+    unique: false, 
   });
 Followers.belongsToMany(Users, {
-    as: 'Following',
+    as: 'following',
     foreignKey: 'follower_id',
     through: 'Followers',
     timestamps: false,
+    unique: false, 
   });
   Users.belongsToMany(Tweets, {
     foreignKey: 'user_id',
     through: 'Likes',
-    timestamps: false, 
+    timestamps: false,
+    unique: false,  
   });
   Tweets.belongsToMany(Users, {
     foreignKey: 'tweet_id',
     through: 'Likes',
     timestamps: false,
+    unique: false, 
   });
   Users.belongsToMany(Comments, {
     foreignKey: 'user_id',
     through: 'Likes',
     timestamps: false, 
+    unique: false, 
   });
   Comments.belongsToMany(Users, {
     foreignKey: 'comment_id',
     through: 'Likes',
     timestamps: false,
+    unique: false, 
   });
   Tweets.hasMany(Comments);
   Comments.belongsTo(Tweets, {foreignKey:'tweet_id'});
@@ -88,7 +92,6 @@ Followers.belongsToMany(Users, {
 module.exports = {
     Comments,
     Followers,
-    Likes,
     Multimedia,
     Notifications,
     Retweets,

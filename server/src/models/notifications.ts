@@ -27,7 +27,7 @@ module.exports = (sequelize : Sequelize)=>{
                 allowNull:false,
             },
             user_id:{
-                type:DataTypes.STRING,
+                type: DataTypes.UUID,
                 allowNull:false,
             },
             related_id:{

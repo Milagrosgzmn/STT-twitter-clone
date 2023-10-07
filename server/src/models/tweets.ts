@@ -29,11 +29,11 @@ module.exports = (sequelize : Sequelize)=>{
                 primaryKey: true,
             },
             user_id:{
-                type: DataTypes.STRING,
+                type: DataTypes.UUID,
                 allowNull: false,
             },
             multimedia_id:{
-                type: DataTypes.STRING,
+                type: DataTypes.UUID,
                 allowNull: true,
             },
             text:{
