@@ -49,6 +49,13 @@ module.exports = (sequelize : Sequelize)=>{
         sequelize,
         modelName: 'Retweets',
         timestamps: false,
+        indexes: [
+            {
+              unique: true,
+              fields: ['user_id', 'tweet_id'],
+              name: 'unique_user_retweet',
+            },
+        ]
         }
     );
     return Retweets;

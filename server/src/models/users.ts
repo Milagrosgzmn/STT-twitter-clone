@@ -8,9 +8,8 @@ interface userAttributes{
   user_lastName: string;
   user_email: string;
   user_country: string | null;
+  user_profilePic: string | null;
   user_phoneNumber: number;
-  followers: string[] | null;
-  following: string[] | null;
 }
 module.exports = (sequelize : Sequelize)=>{
     class Users extends Model<userAttributes> implements userAttributes {
@@ -20,11 +19,9 @@ module.exports = (sequelize : Sequelize)=>{
         public user_lastName!: string;
         public user_email!: string;
         public user_password!: string;
-        public user_country!: string;
+        public user_country!: string | null;
+        public user_profilePic!: string | null;
         public user_phoneNumber!: number;
-        public followers!: string[] | null;
-        public following!: string[] | null;
-        
     }
     Users.init(
         {
@@ -61,17 +58,10 @@ module.exports = (sequelize : Sequelize)=>{
                 type:DataTypes.STRING,
                 allowNull:true,
             },
-            followers:{
-                type:DataTypes.ARRAY(DataTypes.STRING),
-                defaultValue:[],
-                allowNull:true,
-            },
-            following:{
-                type:DataTypes.ARRAY(DataTypes.STRING),
-                defaultValue:[],
+            user_profilePic:{
+                type:DataTypes.STRING,
                 allowNull:true,
             }
-
         },
         {
         sequelize,

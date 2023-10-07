@@ -15,11 +15,19 @@ module.exports = (sequelize : Sequelize)=>{
                 type: DataTypes.STRING,
                 primaryKey: true,
                 allowNull: false,
+                references:{
+                    model: Users,
+                    key: 'user_id',
+                }
             },
             following_id: {
                 type: DataTypes.STRING,
                 primaryKey: true,
                 allowNull: false,
+                references:{
+                    model: Users,
+                    key: 'user_id',
+                }
             },
         },
         {

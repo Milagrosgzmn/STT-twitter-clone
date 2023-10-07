@@ -44,6 +44,13 @@ module.exports = (sequelize : Sequelize)=>{
         sequelize,
         modelName: 'Notifications',
         timestamps: false,
+        indexes: [
+            {
+              unique: true,
+              fields: ['related_id', 'notification_type'],
+              name: 'unique_type_notif',
+            },
+        ]
         }
     );
     return Notifications;

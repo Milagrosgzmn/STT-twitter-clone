@@ -4,6 +4,8 @@ interface CommentAttributes{
   comment_id: string;
   user_id: string;
   tweet_id: string;
+  likes: number | null,
+  retweets: number | null,
   text: string;
   multimedia_id:string | null;
   createdAt: Date;
@@ -14,6 +16,8 @@ module.exports = (sequelize : Sequelize)=>{
         public user_id!: string;
         public tweet_id!: string;
         public text!: string;
+        public likes!: number | null;
+        public retweets!: number | null;
         public multimedia_id!: string | null;
         public createdAt!: Date;
     }
@@ -35,6 +39,16 @@ module.exports = (sequelize : Sequelize)=>{
             text:{
                 type: DataTypes.STRING,
                 allowNull: false,
+            },
+            likes:{
+                type: DataTypes.INTEGER,
+                allowNull: false, //volver a definir el trigger
+                defaultValue: 0,
+            },
+            retweets:{
+                type: DataTypes.INTEGER,
+                allowNull: false, //volver a definir el trigger
+                defaultValue: 0,
             },
             multimedia_id:{
                 type: DataTypes.STRING,
