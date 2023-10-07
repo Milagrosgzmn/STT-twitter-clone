@@ -1,6 +1,8 @@
 import { Image, StyleSheet, Text, View, useColorScheme } from 'react-native';
 import React from 'react';
-import userdefault from '../../assets/images/user_default.png';  
+import userdefault from '../../assets/images/user_default.png';
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const Post = () => {
   const colorScheme = useColorScheme();
@@ -10,20 +12,35 @@ const Post = () => {
     'https://media-be.chewy.com/wp-content/uploads/2022/09/27100424/cavalier-king-charles-spaniel-cute-dogs.jpg';
 
   return (
-    <View style={{ borderWidth: 1, borderColor: 'grey', width: 350,borderRadius:5,  }}>
-      <View style={{flex:1,flexDirection:'row',  }}>
-        <Image source={userdefault} style={{height:40,width:40, margin:5,}}/>
-        <View style={{flex:1,flexDirection:'row', justifyContent:'space-between'  }}><Text style={[styles.title, { color: conditionalColor, fontWeight, fontSize:12, }]}>Luca Rey</Text>
-        <Text style={[styles.title, { color: conditionalColor, fontWeight, fontSize:12, }]}>5 Oct 2023</Text>
+    <View style={styles.container}>
+      <View style={styles.userInfoContainer}>
+        <Image source={userdefault} style={styles.userAvatar} />
+        <View style={styles.userInfoText}>
+          <View style={{ flexDirection: 'row', alignItems: 'center',justifyContent:'space-between' }}>
+            <Text style={[styles.userName, { color: conditionalColor }]} numberOfLines={1}>
+              Luca Rey
+            </Text>
+            <Text style={[styles.date, { color: 'grey', marginLeft: 5 }]} numberOfLines={1}>
+              5 Oct 2023
+            </Text>
+          </View>
+          <Text style={[styles.username, { color: conditionalColor }]} numberOfLines={1}>
+            @LucaRey
+          </Text>
         </View>
-        <View style={{position:'absolute', paddingLeft:41, paddingTop:20,}}><Text style={[styles.title, { color: 'grey', fontWeight, fontSize:11,   }]}>@LucaWolfV2</Text></View>
       </View>
-      
-      <Text style={[styles.title, { color: conditionalColor, fontWeight }]}>
+      <Text style={[styles.mainText, { color: conditionalColor }]} numberOfLines={3}>
         Hello! My name is Luca! Welcome to Spill The Tea! Here's a picture of a cute dog! #socute
       </Text>
       <View style={styles.imageContainer}>
         <Image source={{ uri: dogpic }} style={styles.image} />
+      </View>
+      <View style={[styles.userInfoContainer, { marginTop: 15, justifyContent: 'space-evenly' }]}>
+        <MaterialIcons name="chat-bubble-outline" size={24} color={conditionalColor} />
+        <AntDesign name="retweet" size={24} color={conditionalColor} />
+        <AntDesign name="hearto" size={24} color={conditionalColor} />
+        <AntDesign name="heart" size={24} color={conditionalColor} />
+        <AntDesign name="upload" size={24} color={conditionalColor} />
       </View>
     </View>
   );
@@ -33,28 +50,50 @@ export default Post;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    borderWidth: 1,
+    borderColor: 'grey',
+    width: '100%',
+    borderRadius: 5,
+    padding: 10,
+    height: 'auto',
+  },
+  userInfoContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    
+    marginBottom: 5,
   },
-  title: {
+  userAvatar: {
+    height: 40,
+    width: 40,
+    marginEnd: 10,
+    borderRadius: 20,
+  },
+  userInfoText: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  userName: {
     fontSize: 12,
-    padding: 8,
+    fontWeight: 'bold',
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  date: {
+    fontSize: 12,
+    color: 'grey',
+  },
+  username: {
+    fontSize: 12,
+  },
+  mainText: {
+    fontSize: 12,
+    color: 'black',
+    marginBottom: 5,
   },
   imageContainer: {
-    alignItems: 'center', // Center align horizontally
-    justifyContent: 'center', // Center align vertically
+    alignItems: 'center',
   },
   image: {
     width: 280,
     height: 180,
-    margin: 10,
-    borderRadius:5,
+    borderRadius: 5,
   },
 });

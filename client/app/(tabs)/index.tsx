@@ -2,16 +2,23 @@ import { StyleSheet, useColorScheme } from 'react-native';
 import { Text, View } from '../../components/Themed';
 import { Tabs } from 'expo-router';
 import Post from "../../components/post/postTemplate"
+import React from 'react';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import FollowingScreen from './home/following'; // Import your "Following" screen component
+import LatestScreen from './home/latestScreen'; // Import your "Latest" screen component
 
 export default function Home() {
-  
+  const Tab = createMaterialTopTabNavigator();
   return (
+    <NavigationContainer independent={true}>
+    <Tab.Navigator>
+      <Tab.Screen name="Following" component={FollowingScreen} />
+      <Tab.Screen name="Latest" component={LatestScreen} />
+    </Tab.Navigator>
+  
+  </NavigationContainer>
     
-    <View style={styles.container}>
-     
-      <Text style={styles.title}>Home</Text>
-      <Post  />
-    </View>
   );
 }
 
