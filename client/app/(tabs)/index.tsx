@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import FollowingScreen from './home/following'; // Import your "Following" screen component
-import LatestScreen from './home/latestScreen'; // Import your "Latest" screen component
+import FollowingScreen from '../home/following'; // Import your "Following" screen component
+import LatestScreen from '../home/latestScreen'; // Import your "Latest" screen component
 
 const Tab = createMaterialTopTabNavigator();
 
