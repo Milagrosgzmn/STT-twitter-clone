@@ -1,4 +1,4 @@
-const server = require('./src/server');
+import server from './src/server';
 const {conn} = require('./src/DB_connection');
 const PORT = process.env.PORT || 3000;
 

@@ -1,6 +1,5 @@
 require('dotenv').config();
 const commentsModel = require('./models/comments');
-const followersModel= require('./models/followers');
 const mediosAdjuntosModel = require('./models/mediosAdjuntos');
 const notificationsModel =require('./models/notifications');
 const retweetsModel = require('./models/retweets');
@@ -16,7 +15,6 @@ const sequelize = new Sequelize(`${conection}`,
    { logging: false, native: false, ssl:true }
 );
 commentsModel(sequelize);
-followersModel(sequelize);
 mediosAdjuntosModel(sequelize);
 notificationsModel(sequelize);
 retweetsModel(sequelize);
@@ -35,7 +33,7 @@ Users.belongsToMany(Users, {
     timestamps: false, 
     unique: false, 
   });
-Followers.belongsToMany(Users, {
+Users.belongsToMany(Users, {
     as: 'following',
     foreignKey: 'follower_id',
     through: 'Followers',
@@ -46,25 +44,21 @@ Followers.belongsToMany(Users, {
     foreignKey: 'user_id',
     through: 'Likes',
     timestamps: false,
-    unique: false,  
   });
   Tweets.belongsToMany(Users, {
     foreignKey: 'tweet_id',
     through: 'Likes',
     timestamps: false,
-    unique: false, 
   });
   Users.belongsToMany(Comments, {
     foreignKey: 'user_id',
     through: 'Likes',
     timestamps: false, 
-    unique: false, 
   });
   Comments.belongsToMany(Users, {
     foreignKey: 'comment_id',
     through: 'Likes',
     timestamps: false,
-    unique: false, 
   });
   Tweets.hasMany(Comments);
   Comments.belongsTo(Tweets, {foreignKey:'tweet_id'});
@@ -86,12 +80,8 @@ Followers.belongsToMany(Users, {
   MediaRelationships.belongsTo(Comments, { foreignKey: 'parent_id', constraints: false });
   MediaRelationships.belongsTo(Users, { foreignKey: 'parent_id', constraints: false });
 
-  
-  
-
 module.exports = {
     Comments,
-    Followers,
     Multimedia,
     Notifications,
     Retweets,

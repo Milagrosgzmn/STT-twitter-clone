@@ -31,6 +31,10 @@ module.exports = (sequelize : Sequelize)=>{
             user_id:{
                 type: DataTypes.UUID,
                 allowNull: false,
+                references:{
+                    model: 'Users',
+                    key: 'user_id',
+                }
             },
             multimedia_id:{
                 type: DataTypes.UUID,
