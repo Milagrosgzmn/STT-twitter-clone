@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 
-import { Text, View } from '../../../components/Themed';
-import Post from '../../../components/post/postTemplate';
+import { Text, View } from '../../components/Themed';
+import Post from '../../components/post/postTemplate';
 
-export default function LatestScreen() {
+export default function FollowingScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>latest</Text>
-      <Post  /><Post  />
+      <Text style={styles.title}>followers only</Text>
+      <Post  />
     </View>
   );
 }
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   title: {
     fontSize: 20,
