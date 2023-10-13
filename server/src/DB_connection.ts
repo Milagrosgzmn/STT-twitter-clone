@@ -1,12 +1,12 @@
 require('dotenv').config();
-const commentsModel = require('./models/comments');
-const mediosAdjuntosModel = require('./models/mediosAdjuntos');
-const notificationsModel =require('./models/notifications');
-const retweetsModel = require('./models/retweets');
-const tweetsModel =require('./models/tweets');
-const usersModel =require('./models/users');
-const MediaRelationshipsModel = require('./models/mediaRelationships');
-const { Sequelize } = require('sequelize');
+import commentsModel from './models/comments';
+import mediosAdjuntosModel from './models/mediosAdjuntos';
+import notificationsModel from './models/notifications';
+import retweetsModel from './models/retweets';
+import tweetsModel from './models/tweets';
+import usersModel from './models/users';
+import MediaRelationshipsModel from './models/mediaRelationships';
+import { Sequelize } from 'sequelize';
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_URL } = process.env;
 
 const conection = DB_URL || `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`;
@@ -22,7 +22,7 @@ tweetsModel(sequelize);
 usersModel(sequelize);
 MediaRelationshipsModel(sequelize);
 
-const {Comments, MediaRelationships, Followers, Multimedia, Notifications, Retweets, Tweets, Users} = sequelize.models;
+const {Comments, MediaRelationships, Multimedia, Notifications, Retweets, Tweets, Users} = sequelize.models;
 
 Users.hasMany(Tweets)
 Tweets.belongsTo(Users,{foreignKey:'user_id'});
@@ -30,15 +30,13 @@ Users.belongsToMany(Users, {
     as: 'followers',
     foreignKey: 'following_id',
     through: 'Followers',
-    timestamps: false, 
-    unique: false, 
+    timestamps: false,
   });
 Users.belongsToMany(Users, {
     as: 'following',
     foreignKey: 'follower_id',
     through: 'Followers',
     timestamps: false,
-    unique: false, 
   });
   Users.belongsToMany(Tweets, {
     foreignKey: 'user_id',

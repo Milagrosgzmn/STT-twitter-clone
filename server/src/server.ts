@@ -1,10 +1,12 @@
 const express = require("express");
-/* const router = require("./ routes"); */
+const router = require("./routes/index");
+const morgan = require('morgan');
 /* const cors = require("cors"); */
 
 const server = express();
 
 server.use(express.json());
+server.use(morgan('dev'));
 /* server.use(cors()); */
 
 server.use((_req: any, res: { header: (arg0: string, arg1: string) => void; }, next: () => void) => {
@@ -21,6 +23,6 @@ server.use((_req: any, res: { header: (arg0: string, arg1: string) => void; }, n
     next();
  });
 
-/* server.use(router); */
+server.use(router);
 
 export default server;

@@ -1,18 +1,8 @@
-import { DataTypes, Model, Sequelize } from 'sequelize';
+import { DataTypes,Model, Sequelize } from 'sequelize';
+import { User } from '../types/types';
 
-interface userAttributes{
-  user_id: string;
-  user_username: string;
-  user_firstName: string;
-  user_password: string;
-  user_lastName: string;
-  user_email: string;
-  user_country: string | null;
-  user_profilePic: string | null;
-  user_phoneNumber: number;
-}
-module.exports = (sequelize : Sequelize)=>{
-    class Users extends Model<userAttributes> implements userAttributes {
+export default (sequelize : Sequelize)=>{
+    class Users extends Model<User> implements User {
         public user_id!: string;
         public user_username!: string;
         public user_firstName!: string;

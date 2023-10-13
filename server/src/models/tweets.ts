@@ -1,17 +1,8 @@
 import { DataTypes, Model, Sequelize } from 'sequelize';
+import { Tweet } from '../types/types';
 
-interface TweetsAttributes{
-    tweet_id: string,
-    user_id: string,
-    text: string | null, // preguntar
-    multimedia_id: string | null,
-    likes: number | null,
-    retweets: number | null,
-    comments: string[] | null,
-    created_at: Date,
-}
-module.exports = (sequelize : Sequelize)=>{
-    class Tweets extends Model<TweetsAttributes> implements TweetsAttributes {
+export default (sequelize : Sequelize)=>{
+    class Tweets extends Model<Tweet> implements Tweet {
         public tweet_id!: string;
         public user_id!: string;
         public text!: string | null;

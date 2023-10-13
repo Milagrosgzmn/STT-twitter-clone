@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
-module.exports = (sequelize) => {
+exports.default = (sequelize) => {
     class Retweets extends sequelize_1.Model {
     }
     Retweets.init({
