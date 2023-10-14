@@ -1,24 +1,28 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
-const commentsModel = require('./models/comments');
-const mediosAdjuntosModel = require('./models/mediosAdjuntos');
-const notificationsModel = require('./models/notifications');
-const retweetsModel = require('./models/retweets');
-const tweetsModel = require('./models/tweets');
-const usersModel = require('./models/users');
-const MediaRelationshipsModel = require('./models/mediaRelationships');
-const { Sequelize } = require('sequelize');
+const comments_1 = __importDefault(require("./models/comments"));
+const mediosAdjuntos_1 = __importDefault(require("./models/mediosAdjuntos"));
+const notifications_1 = __importDefault(require("./models/notifications"));
+const retweets_1 = __importDefault(require("./models/retweets"));
+const tweets_1 = __importDefault(require("./models/tweets"));
+const users_1 = __importDefault(require("./models/users"));
+const mediaRelationships_1 = __importDefault(require("./models/mediaRelationships"));
+const sequelize_1 = require("sequelize");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_URL } = process.env;
 const conection = DB_URL || `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`;
-const sequelize = new Sequelize(`${conection}`, { logging: false, native: false, ssl: true });
-commentsModel(sequelize);
-mediosAdjuntosModel(sequelize);
-notificationsModel(sequelize);
-retweetsModel(sequelize);
-tweetsModel(sequelize);
-usersModel(sequelize);
-MediaRelationshipsModel(sequelize);
-const { Comments, MediaRelationships, Followers, Multimedia, Notifications, Retweets, Tweets, Users } = sequelize.models;
+const sequelize = new sequelize_1.Sequelize(`${conection}`, { logging: false, native: false, ssl: true });
+(0, comments_1.default)(sequelize);
+(0, mediosAdjuntos_1.default)(sequelize);
+(0, notifications_1.default)(sequelize);
+(0, retweets_1.default)(sequelize);
+(0, tweets_1.default)(sequelize);
+(0, users_1.default)(sequelize);
+(0, mediaRelationships_1.default)(sequelize);
+const { Comments, MediaRelationships, Multimedia, Notifications, Retweets, Tweets, Users } = sequelize.models;
 Users.hasMany(Tweets);
 Tweets.belongsTo(Users, { foreignKey: 'user_id' });
 Users.belongsToMany(Users, {
@@ -26,14 +30,12 @@ Users.belongsToMany(Users, {
     foreignKey: 'following_id',
     through: 'Followers',
     timestamps: false,
-    unique: false,
 });
 Users.belongsToMany(Users, {
     as: 'following',
     foreignKey: 'follower_id',
     through: 'Followers',
     timestamps: false,
-    unique: false,
 });
 Users.belongsToMany(Tweets, {
     foreignKey: 'user_id',

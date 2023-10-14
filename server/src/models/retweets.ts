@@ -1,15 +1,8 @@
 import { DataTypes, Model, Sequelize } from 'sequelize';
+import { Retweet } from '../types/types';
 
-interface RetweetAttributes{
-  retweet_id: string;   
-  user_id: string;
-  text: string | null; // preguntar
-  multimedia_id: string | null;
-  tweet_id:string;
-  created_at: Date;
-}
-module.exports = (sequelize : Sequelize)=>{
-    class Retweets extends Model<RetweetAttributes> implements RetweetAttributes {
+export default (sequelize : Sequelize)=>{
+    class Retweets extends Model<Retweet> implements Retweet {
         public retweet_id!: string;
         public user_id!: string;
         public text!: string | null; // preguntar

@@ -6,7 +6,7 @@ interface MultimediaAttributes{
   public_id: string;
   multimedia_type: string;
 }
-module.exports = (sequelize : Sequelize)=>{
+export default (sequelize : Sequelize)=>{
     class Multimedia extends Model<MultimediaAttributes> implements MultimediaAttributes {
         public multimedia_id!: string;
         public multimedia_url!: string;

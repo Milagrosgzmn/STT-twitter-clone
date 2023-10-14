@@ -1,17 +1,8 @@
 import { DataTypes, Model, Sequelize } from 'sequelize';
+import { Comment } from '../types/types';
 
-interface CommentAttributes{
-  comment_id: string;
-  user_id: string;
-  tweet_id: string;
-  likes: number | null,
-  retweets: number | null,
-  text: string;
-  multimedia_id:string | null;
-  createdAt: Date;
-}
-module.exports = (sequelize : Sequelize)=>{
-    class Comments extends Model<CommentAttributes> implements CommentAttributes {
+export default (sequelize : Sequelize)=>{
+    class Comments extends Model<Comment> implements Comment {
         public comment_id!: string;
         public user_id!: string;
         public tweet_id!: string;

@@ -1,11 +1,8 @@
 import { DataTypes, Model, Sequelize } from 'sequelize';
+import { Media } from '../types/types';
 
-interface mediaRelationships{
-  multimedia_id: string;
-  parent_id:string;
-}
-module.exports = (sequelize : Sequelize)=>{
-    class MediaRelationships extends Model<mediaRelationships> implements mediaRelationships {
+export default (sequelize : Sequelize)=>{
+    class MediaRelationships extends Model<Media> implements Media {
         public multimedia_id!: string;
         public parent_id!:string;
         

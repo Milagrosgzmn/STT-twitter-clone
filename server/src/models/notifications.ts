@@ -1,14 +1,8 @@
 import { DataTypes, Model, Sequelize } from 'sequelize';
+import { Notification } from '../types/types';
 
-interface NotificationAttributes{
-  notification_id: string;
-  notification_type:string;
-  user_id:string;
-  related_id:string;
-  is_read:boolean | null;
-}
-module.exports = (sequelize : Sequelize)=>{
-    class Notifications extends Model<NotificationAttributes> implements NotificationAttributes {
+export default (sequelize : Sequelize)=>{
+    class Notifications extends Model<Notification> implements Notification {
         public notification_id!: string;
         public notification_type!: string;
         public user_id!: string;
