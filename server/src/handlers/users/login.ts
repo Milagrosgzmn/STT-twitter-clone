@@ -16,9 +16,9 @@ try {
         }});
     if(user){
         const match: boolean = await bcrypt.compare(password, user.user_password);
-        return match ? res.status(200).json('yes') : res.status(400).send('nou');
+        return match ? res.status(200).json('yes') : res.status(400).send('wrong password');
     }
-    return res.status(400).json('not user found') 
+    return res.status(400).send('not user found') 
     
 } catch (error:any) {
     return res.status(500).send(error.message);
