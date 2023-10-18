@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, View, useColorScheme } from 'react-native';
 import React, { useState } from 'react';
-import userdefault from '../../assets/images/user_default.png';
+// import userdefault from '../../assets/images/user_default.png';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -20,7 +20,7 @@ const Post = () => {
   return (
     <View style={styles.container}>
       <View style={styles.userInfoContainer}>
-        <Image source={userdefault} style={styles.userAvatar} />
+        <Image source={require('../../assets/images/user_default.png')} style={styles.userAvatar} />
         <View style={styles.userInfoText}>
           <View style={{ flexDirection: 'row', alignItems: 'center',justifyContent:'space-between' }}>
             <Text style={[styles.userName, { color: conditionalColor }]} numberOfLines={1}>
@@ -58,10 +58,9 @@ export default Post;
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 1,
     borderColor: 'grey',
     width: '100%',
-    borderRadius: 5,
+    borderTopWidth: 1,
     padding: 10,
     height: 'auto',
   },
