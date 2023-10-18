@@ -2,13 +2,17 @@ import { StyleSheet } from 'react-native';
 
 import { Text, View } from '../../components/Themed';
 import Post from '../../components/post/postTemplate';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function LatestScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>latest</Text>
-      <Post  /><Post  />
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.title}>latest</Text>
+        <Post/>
+        <Post/>
+      </View>
+    </ScrollView>
   );
 }
 

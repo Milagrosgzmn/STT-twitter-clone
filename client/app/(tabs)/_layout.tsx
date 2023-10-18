@@ -3,7 +3,7 @@ import { DrawerToggleButton } from '@react-navigation/drawer';
 import { Tabs } from 'expo-router';
 import { Pressable, useColorScheme,Image } from 'react-native';
 
-import logo from '../../assets/images/sttlogo.png';  
+// import logo from '../../assets/images/sttlogo.png';  
 
 import Colors from '../../constants/Colors';
 
@@ -21,18 +21,12 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
   const conditionalColor = colorScheme === 'light' ? 'black' : 'white';
   const headerTitle = () => (
-    <Image source={logo} style={{ width: 60, height: 70, marginBottom:6,  tintColor: conditionalColor }} />
+    <Image source={require('../../assets/images/sttlogo.png')} style={{ width: 60, height: 70, marginBottom:6,  tintColor: conditionalColor }} />
   );
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerLeft: () => (
-          <Pressable>
-            {({ pressed }) => (<DrawerToggleButton tintColor={conditionalColor}/>
-            )}
-          </Pressable>
-      ),
       headerTitleAlign: 'center', // Center-align the header title
       headerTitle, // Use the custom header title component
       
