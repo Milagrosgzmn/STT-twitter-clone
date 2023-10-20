@@ -10,7 +10,16 @@ export interface User{
     user_profilePic: string | null;
     user_phoneNumber: number;
   };
-
+  export interface UserWithoutPassword {
+    user_id: string;
+    user_username: string;
+    user_firstName: string;
+    user_lastName: string;
+    user_email: string;
+    user_country: string | null;
+    user_profilePic: string | null;
+    user_phoneNumber: number;
+}
 export interface Media{
     multimedia_id: string;
     parent_id:string;
