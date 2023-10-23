@@ -44,8 +44,8 @@ const Post = () => {
       <View style={[styles.userInfoContainer, { marginTop: 15, justifyContent: 'space-evenly' }]}>
         <MaterialIcons name="chat-bubble-outline" size={24} color={conditionalColor} />
         <AntDesign name="retweet" size={24} color={conditionalColor} />
-      {liked && <AntDesign name="heart" size={24} color={conditionalColor} onClick={handleLiked}/> }
-      {!liked &&       <AntDesign name="hearto" size={24} color={conditionalColor} onClick={handleLiked}/>
+      {liked && <AntDesign name="heart" size={24} color={conditionalColor} onPress={handleLiked}/> }
+      {!liked &&       <AntDesign name="hearto" size={24} color={conditionalColor} onPress={handleLiked}/>
  }   
         
         <AntDesign name="upload" size={24} color={conditionalColor} />

@@ -9,18 +9,26 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function Home() {
   const colorScheme = useColorScheme();
-  const conditionalColor = colorScheme === 'light' ? 'black' : 'white';
+  const conditionalColor = colorScheme === 'light' ? 'lavender' : 'white';
+  const conditionalTextColor = colorScheme === 'light' ?  'white': 'black';
 
   return (
     <NavigationContainer independent={true}>
       <Tab.Navigator
         initialRouteName="Following" // Set the initial tab
-        tabBarOptions={{
-          activeTintColor: conditionalColor, // Color of the active tab
-          labelStyle: { fontWeight: 'bold' }, // Style for the tab label
-          indicatorStyle: { backgroundColor: 'grey' }, // Style for the tab indicator
-          tabStyle: { backgroundColor: 'black' }, // Change the background color of the tabs
-
+        screenOptions={{
+  tabBarActiveTintColor: "black",
+  tabBarLabelStyle: {
+    fontWeight: "bold",
+    color: conditionalTextColor,
+  },
+  tabBarItemStyle: {
+    backgroundColor: conditionalColor
+  },
+  tabBarIndicatorStyle: {
+    backgroundColor:conditionalColor
+  
+}
         }}
       >
         <Tab.Screen name="Following" component={FollowingScreen} />

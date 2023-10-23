@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import { Text, View } from '../../components/Themed';
 import Post from '../../components/post/postTemplate';
 import { ScrollView } from 'react-native-gesture-handler';
+import NewTweetButton from '../../components/tweets/NewTweetButton';
 
 export default function FollowingScreen() {
   return (
@@ -10,6 +11,7 @@ export default function FollowingScreen() {
       <View style={styles.container}>
         <Text style={styles.title}>followers only</Text>
         <Post/>
+        <NewTweetButton/>
       </View>
     </ScrollView>
   );
