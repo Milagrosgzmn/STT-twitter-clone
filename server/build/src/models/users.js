@@ -13,6 +13,7 @@ exports.default = (sequelize) => {
         user_username: {
             type: sequelize_1.DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
         user_firstName: {
             type: sequelize_1.DataTypes.STRING,
@@ -25,6 +26,7 @@ exports.default = (sequelize) => {
         user_email: {
             type: sequelize_1.DataTypes.STRING,
             allowNull: false,
+            unique: true,
         },
         user_password: {
             type: sequelize_1.DataTypes.STRING,
@@ -33,6 +35,7 @@ exports.default = (sequelize) => {
         user_phoneNumber: {
             type: sequelize_1.DataTypes.INTEGER,
             allowNull: false,
+            unique: true,
         },
         user_country: {
             type: sequelize_1.DataTypes.STRING,
